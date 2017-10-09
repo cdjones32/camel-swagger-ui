@@ -1,0 +1,33 @@
+group 'co.cdjones.camel.swagger'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+allprojects {
+    repositories {
+        mavenCentral()
+        maven { url 'https://jitpack.io' }
+    }
+}
+
+def camel_version = '2.19.1'
+
+dependencies {
+
+    compile "com.github.cdjones32:camel-static-fileserver:master-SNAPSHOT"
+
+    // Apache Camel
+    compile "org.apache.camel:camel-core:${camel_version}"
+
+    // Camel HTTP Support
+    testCompile "org.apache.camel:camel-netty4-http:${camel_version}"
+
+    // Camel Swagger support
+    testCompile "org.apache.camel:camel-swagger-java:${camel_version}"
+    // Camel JSON Support
+    testCompile "org.apache.camel:camel-jackson:${camel_version}"
+
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
